@@ -18,6 +18,7 @@
     "hardhat": "^2.8.4"
   },
   "dependencies": {
+    "@material-ui/core": "^4.12.3",
     "dotenv": "^16.0.0"
   }
 }

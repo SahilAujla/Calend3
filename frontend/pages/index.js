@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
 import detectEthereumProvider from "@metamask/detect-provider";
-import Calendar from "../components/calendar";
+import dynamic from "next/dynamic";
+const Calendar = dynamic(() => import("../components/calendar"), {
+  ssr: false,
+});
 
 function App() {
   const [account, setAccount] = useState(false);
@@ -52,10 +55,10 @@ function App() {
       </Head>
       <header className="App-header">
         <h1>Calend3</h1>
-        <p class="slogan">web3 appointment scheduler</p>
+        <p className="slogan">web3 appointment scheduler</p>
       </header>
       {!account && <button onClick={connect}>connect wallet</button>}
-      {account && <Calendar />}
+      {account && <Calendar account={account} />}
     </div>
   );
 }
